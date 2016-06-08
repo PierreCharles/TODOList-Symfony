@@ -1,12 +1,12 @@
-# TODOList-Symfony
+# ToDoList-Symfony
 
 TODO tasks List practical project using Symfony
 
 ### Install
 
-    git clone https://github.com/PierreCharles/TODOList-Symfony.git
+    git clone https://github.com/PierreCharles/ToDoList-Symfony.git
 
-    cd TODOList-Symfony/
+    cd ToDoList-Symfony/
 
     composer install
 
@@ -32,17 +32,17 @@ Each directory has its own purpose (and set of files):
 
 Initialize MySQL with a user/password and a database
 
-    docker run -d -p 3306 \
+    docker run -d -p 3307 \
       --name mysql \
       --volumes-from data_mysql \
-      -e MYSQL_USER=todolist \
+      -e MYSQL_USER=root \
       -e MYSQL_PASS=password \
-      -e ON_CREATE_DB=todolist \
+      -e ON_CREATE_DB=symfony \
       tutum/mysql
 
-Executing your SQL from the command line
+Creating database and table
 
-    mysql utodolist -utodolist -ppassword < app/config/schema.sql
+    mysql usymfony -uroot -ppassword < app/config/schema.sql
 
 ### Launch server
 
