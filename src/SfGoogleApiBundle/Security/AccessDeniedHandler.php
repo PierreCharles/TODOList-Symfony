@@ -1,13 +1,13 @@
 <?php
 
-namespace Will\Bundle\SfGoogleApiBundle\Security\Authorization;
+namespace SfGoogleApiBundle\Security\Authorization;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
-use Will\Bundle\SfGoogleApiBundle\GoogleClient;
+use HappyR\Google\ApiBundle\Services\GoogleClient;
 
 class AccessDeniedHandler implements AccessDeniedHandlerInterface
 {

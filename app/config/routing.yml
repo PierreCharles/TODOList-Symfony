@@ -1,2 +1,5 @@
 ToDoListBundle:
     resource: "@ToDoListBundle/Resources/config/routing.yml"
+
+sf_google_api_bundle:
+   resource: "@SfGoogleApiBundle/Resources/config/routing.yml"

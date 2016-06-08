@@ -1,0 +1,7 @@
+services:
+      sf_google_api_bundle.authentificator:
+          class: SfGoogleApiBundle\Security\Authentification\Authentificator
+
+      sf_google_api_bundle.authentificator:
+          class: SfGoogleApiBundle\Security\Authorization\AccessDeniedHandler
+          arguments: ["@happyr.google.api.client"]

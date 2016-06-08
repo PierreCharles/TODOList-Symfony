@@ -19,8 +19,8 @@ security:
         default:
             pattern:  ^/
             simple_preauth:
-                authenticator: will_sf_google_api.authenticator
-            access_denied_handler: will_sf_google_api.access_denied.handler
+                authenticator: sf_google_api_bundle.authentificator
+            access_denied_handler: sf_google_api_bundle.access_denied_handler
 
     access_control:
         - { path: ^/oauth/callback$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
