@@ -1,0 +1,24 @@
+app.ToDoList_index:
+    path: /
+    defaults: { _controller: ToDoListBundle:ToDoList:index}
+    methods : [ GET ]
+
+app.ToDoList_listTasks:
+  path: /listTasks
+  defaults: { _controller: ToDoListBundle:ToDoList:listTasks}
+  methods : [ GET ]
+
+app.ToDoList_addTask:
+  path : /addTask
+  defaults : { _controller: ToDoListBundle:ToDoList:addTask}
+  methods : [ GET ]
+
+app.ToDoList_updateTask:
+  path : /updateTask
+  defaults: { _controller: ToDoListBundle:ToDoList:updateTask}
+  methods: [ GET ]
+
+app.ToDoList_deleteTask:
+  path : /deleteTask
+  defaults: { _controller: ToDoListBundle:ToDoList:deleteTask}
+  methods : [ POST ]
