@@ -32,17 +32,20 @@ Each directory has its own purpose (and set of files):
 
 Initialize MySQL with a user/password and a database
 
-    docker run -d -p 3307 \
+    docker run -d -p 3306 \
       --name mysql \
       --volumes-from data_mysql \
       -e MYSQL_USER=root \
       -e MYSQL_PASS=password \
-      -e ON_CREATE_DB=symfony \
       tutum/mysql
 
-Creating database and table
+Create Database :
 
-    mysql usymfony -uroot -ppassword < app/config/schema.sql
+    php bin/console doctrine:database:create
+
+Connect into mysql container
+
+    mysql -h127.0.0.1 -P32770 -uroot -p
 
 ### Launch server
 

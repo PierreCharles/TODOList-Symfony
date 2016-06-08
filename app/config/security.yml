@@ -15,3 +15,13 @@ security:
 
         main:
             anonymous: ~
+
+        default:
+            pattern:  ^/
+            simple_preauth:
+                authenticator: will_sf_google_api.authenticator
+            access_denied_handler: will_sf_google_api.access_denied.handler
+
+    access_control:
+        - { path: ^/oauth/callback$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_HAS_TOKEN }
