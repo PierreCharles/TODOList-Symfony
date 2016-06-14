@@ -5,19 +5,19 @@ security:
             memory: ~
 
     firewalls:
-
+        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        main:
-            anonymous: ~
 
         default:
             pattern:  ^/googletask/api/
             simple_preauth:
                 authenticator: google_api_task.authenticator
             access_denied_handler: google_api_task.access_denied.handler
+
+        main:
+            anonymous: ~
 
     access_control:
         - { path: ^/googletask/api/home/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -12,8 +12,11 @@ class DefaultController extends Controller
 {
     
     private $client;
-     /**
+
+    /**
      * @Route("/", name="google_api_task_homepage")
+     *
+     * @param Request $request
      */
     public function indexAction(Request $request)
     {
@@ -24,24 +27,24 @@ class DefaultController extends Controller
             $this->client=$googleClient->getGoogleClient();
         }
     }
-    
-    
-     /**
+
+
+    /**
      * @Route("/home/", name="google_api_task_home")
      */
     public function testAction(Request $request){
-         $service = new \Google_Service_Tasks($this->client);
+        $service = new \Google_Service_Tasks($this->client);
 
-            // Print the first 10 task lists.
-            $optParams = array(
-              'maxResults' => 10,
-            );
-            $results = $service->tasklists->listTasklists($optParams);
+        // Print the first 10 task lists.
+        $optParams = array(
+            'maxResults' => 10,
+        );
+        $results = $service->tasklists->listTasklists($optParams);
 
-            if (count($results->getItems()) == 0) {
-              Return new Response("No task lists found.\n",200);
-            } else {
-                return new Response(json_encode($results->getItems),200);
-            }
+        if (count($results->getItems()) == 0) {
+            Return new Response("No task lists found.\n",200);
+        } else {
+            return new Response(json_encode($results->getItems),200);
+        }
     }
 }
