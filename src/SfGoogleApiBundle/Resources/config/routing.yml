@@ -1,4 +1,0 @@
-default:
-      ressource: "@GoogleApiTaskBundle/Controller/DefaultController.php"
-      prefix: /api
-      type: annotation

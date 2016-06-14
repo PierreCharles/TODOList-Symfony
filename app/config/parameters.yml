@@ -1,2 +1,19 @@
 # This file is auto-generated during the composer install
 parameters:
+    database_host: 127.0.0.1
+    database_port: 32770
+    database_name: symfony
+    database_user: root
+    database_password: password
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+
+    application_name: 'TODO-List Project'
+    oauth2_client_id: 67943194789-69vt3g4866c0je7aj5tm62edn9nmsdlq.apps.googleusercontent.com
+    oauth2_client_secret: gEPR1J0G2a4F4ycTX_0vunBo
+    oauth2_redirect_uri: 'http://127.0.0.1:8000/app.dev.php/googletask/api/home/'
+    developer_key: 67943194789-69vt3g4866c0je7aj5tm62edn9nmsdlq.apps.googleusercontent.com
+    site_name: todolist-project.fr

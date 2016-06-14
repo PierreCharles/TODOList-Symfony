@@ -1,6 +1,6 @@
 <?php
 
-namespace SfGoogleApiBundle\Security\Authorization;
+namespace GoogleApiTaskBundle\Security\Authorization;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -17,22 +17,21 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface
     {
         $this->client = $client;
     }
-
     /**
      * {@inheritDoc}
      */
     public function handle(Request $request, AccessDeniedException $accessDeniedException)
     {
-        return new RedirectResponse($this->client->generateAuthUrl());
+        $this->client->getGoogleClient()->setScopes([ \Google_Service_Tasks::TASKS ]);
+        return new RedirectResponse($this->client->createAuthUrl());
     }
-
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         if ($event->getException() instanceof \Google_Auth_Exception ||
             $event->getException() instanceof \Google_Service_Exception
         ) {
             $event->setResponse(
-                new RedirectResponse($this->client->generateAuthUrl())
+                new RedirectResponse($this->client->createAuthUrl())
             );
         }
     }

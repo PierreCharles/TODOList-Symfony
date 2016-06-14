@@ -4,9 +4,6 @@ security:
         in_memory:
             memory: ~
 
-    role_hierarchy:
-         ROLE_HAS_TOKEN: IS_AUTHENTICATED_ANONYMOUSLY
-
     firewalls:
 
         dev:
@@ -17,11 +14,11 @@ security:
             anonymous: ~
 
         default:
-            pattern:  ^/
+            pattern:  ^/googletask/api/
             simple_preauth:
-                authenticator: sf_google_api_bundle.authentificator
-            access_denied_handler: sf_google_api_bundle.access_denied_handler
+                authenticator: google_api_task.authenticator
+            access_denied_handler: google_api_task.access_denied.handler
 
     access_control:
-        - { path: ^/oauth/callback$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_HAS_TOKEN }
+        - { path: ^/googletask/api/home/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/googletask/api/, roles: ROLE_HAS_TOKEN }

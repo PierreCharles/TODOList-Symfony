@@ -1,0 +1,9 @@
+services:
+    google_api_task.authenticator:
+        class: GoogleApiTaskBundle\Security\Authentication\Authenticator
+    
+    google_api_task.access_denied.handler:
+        class: GoogleApiTaskBundle\Security\Authorization\AccessDeniedHandler
+        arguments: ["@happyr.google.api.client"]
+
+     

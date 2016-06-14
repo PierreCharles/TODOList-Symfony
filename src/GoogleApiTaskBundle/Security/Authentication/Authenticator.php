@@ -1,5 +1,6 @@
 <?php
-namespace SfGoogleApiBundle\Security\Authentication;
+
+namespace GoogleApiTaskBundle\Security\Authentication;
 
 use Symfony\Component\Security\Http\Authentication\SimplePreAuthenticatorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -17,24 +18,17 @@ class Authenticator implements SimplePreAuthenticatorInterface, AuthenticationFa
      */
     public function createToken(Request $request, $providerKey)
     {
-        return new PreAuthenticatedToken(
-            'anon.',
-            null,
-            $providerKey
-        );
+        return new PreAuthenticatedToken('anon.', null, $providerKey);
     }
+
     /**
      * {@inheritDoc}
      */
     public function authenticateToken(TokenInterface $token, UserProviderInterface $userProvider, $providerKey)
     {
-        return new PreAuthenticatedToken(
-            'anon.',
-            null,
-            $providerKey,
-            []
-        );
+        return new PreAuthenticatedToken('anon.', null, $providerKey, []);
     }
+
     /**
      * {@inheritDoc}
      */
@@ -42,6 +36,7 @@ class Authenticator implements SimplePreAuthenticatorInterface, AuthenticationFa
     {
         return $token instanceof PreAuthenticatedToken && $token->getProviderKey() === $providerKey;
     }
+
     /**
      * {@inheritDoc}
      */
