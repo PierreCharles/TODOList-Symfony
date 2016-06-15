@@ -43,9 +43,11 @@ Create Database :
 
     php bin/console doctrine:database:create
 
+    php bin/console doctrine:schema:update --force
+
 Connect into mysql container
 
-    mysql -h127.0.0.1 -P32770 -uroot -p
+    mysql -h127.0.0.1 -P{port:docker ps -a} -uroot -p
 
 ### Launch server
 

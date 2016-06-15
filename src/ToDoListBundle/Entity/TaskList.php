@@ -5,7 +5,7 @@ namespace ToDoListBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TaskList
+ * TaskList.
  *
  * @ORM\Table(name="task_list")
  * @ORM\Entity(repositoryClass="ToDoListBundle\Repository\TaskListRepository")
@@ -49,9 +49,8 @@ class TaskList
      */
     private $addDate;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -61,7 +60,7 @@ class TaskList
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -75,7 +74,7 @@ class TaskList
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -85,7 +84,7 @@ class TaskList
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
      *
@@ -99,7 +98,7 @@ class TaskList
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string
      */
@@ -109,7 +108,7 @@ class TaskList
     }
 
     /**
-     * Set taskList
+     * Set taskList.
      *
      * @param array $taskList
      *
@@ -123,7 +122,7 @@ class TaskList
     }
 
     /**
-     * Get taskList
+     * Get taskList.
      *
      * @return array
      */
@@ -133,7 +132,7 @@ class TaskList
     }
 
     /**
-     * Set addDate
+     * Set addDate.
      *
      * @param \DateTime $addDate
      *
@@ -147,7 +146,7 @@ class TaskList
     }
 
     /**
-     * Get addDate
+     * Get addDate.
      *
      * @return \DateTime
      */
@@ -156,4 +155,3 @@ class TaskList
         return $this->addDate;
     }
 }
-

@@ -2,8 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@ToDoListBundle/Resources/config/services.yml" }
     - { resource: "@GoogleApiTaskBundle/Resources/config/services.yml" }
+    - { resource: "@ToDoListBundle/Resources/config/services.yml" }
 
 parameters:
     locale: en
@@ -65,3 +65,4 @@ happy_r_google_api:
     oauth2_redirect_uri:  "%oauth2_redirect_uri%"
     developer_key:        "%developer_key%"
     site_name:            "%site_name%"
+

@@ -6,6 +6,7 @@ ToDoListBundle:
     resource: "@ToDoListBundle/Resources/config/routing.yml"
     prefix:   /todolist
 
-google_api_task:
+
+google_task_api:
     resource: "@GoogleApiTaskBundle/Resources/config/routing.yml"
-    prefix:   /googletask
+    prefix:   /

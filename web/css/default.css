@@ -1,0 +1,10 @@
+.home_choice {
+    width: 500px;
+    margin: auto;
+    margin-top: 200px;
+    padding: 50px;
+    border: 1px solid darkgrey;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}

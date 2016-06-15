@@ -1,4 +1,24 @@
-default:
-    resource: "@GoogleApiTaskBundle/Controller/DefaultController.php"
-    prefix:   /api
-    type:     annotation
+google_task_api_homepage:
+    path:     /google
+    defaults: { _controller: GoogleApiTaskBundle:Default:list }
+google_task_api_callback:
+    path:     /callback
+    defaults: { _controller: GoogleApiTaskBundle:Default:callback }
+google_task_api_list:
+    path:   /google/list
+    defaults : { _controller : GoogleApiTaskBundle:Default:list }
+google_task_api_delete:
+    path: /google/delete/{taskList}
+    defaults : { _controller : GoogleApiTaskBundle:Default:delete }
+google_task_api_update:
+    path: /google/update/{taskList}
+    defaults : { _controller : GoogleApiTaskBundle:Default:update }
+google_task_api_logout:
+    path: /google/logout
+    defaults : { _controller : GoogleApiTaskBundle:Default:disconnect }
+google_task_api_showitems:
+    path: /google/list/items/{taskList}
+    defaults : { _controller : GoogleApiTaskBundle:Default:showItems }
+google_task_api_listupdate:
+    path : /google/list/update/{id}
+    defaults : { _controller : GoogleApiTaskBundle:Default:updateList }
