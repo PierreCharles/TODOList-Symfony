@@ -1,26 +1,29 @@
 {% extends 'base.html.twig' %}
 {% block title %} Task List{% endblock %}
 {% block body %}
-    
-    
-<div class="row">
-      {% for taskList in taskLists %} 
-        <div class="col s4 m4 ">
-          <div class="card deep-orange lighten-2">
-            <div class="card-content white-text">
-              <span class="card-title">{{ taskList.title }}</span>
-              <p>This is your list, you can edit, delete and view the contents thereof ; Your items will also be changed.</p>
-            </div>
-            <div class="card-action">
-                <a href='/google/list/items/{{taskList.id}}' ><span class=" grey-text text-lighten-3">Show items</span></a>
-                <a href='/google/tasklist/update/{{taskList.id}}'><span class=" grey-text text-lighten-3">Update</span></a>
-                <a href='/google/delete/{{ taskList.id }}'><span class=" grey-text text-lighten-3">Delete</span></a>
-            </div>
-          </div>
+
+
+    <div class="row home_choice">
+
+        <div class="row">
+            {% for taskList in taskLists %}
+                <div class="col s4 m4 ">
+                    <div class="card deep-orange lighten-2">
+                        <div class="card-content white-text">
+                            <span class="card-title">{{ taskList.title }}</span>
+                        </div>
+                        <div class="card-action">
+                            <a href='/google/list/items/{{taskList.id}}' ><span class=" grey-text text-lighten-3">Show items</span></a>
+                            <a href='/google/tasklist/update/{{taskList.id}}'><span class=" grey-text text-lighten-3">Update</span></a>
+                            <a href='/google/delete/{{ taskList.id }}'><span class=" grey-text text-lighten-3">Delete</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s1 m1">
+                </div>
+            {% endfor %}
         </div>
-        <div class="col s1 m1">
-        </div>
-          {% endfor %}
-      </div>
+
+    </div>
             
 {% endblock %}

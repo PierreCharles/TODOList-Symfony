@@ -13,8 +13,8 @@ class TaskService {
     {
         $token = json_decode($security->getToken()->getUser(), true);
         $googleClient = $client->getGoogleClient();
-        $googleClient->setAccessToken($token);
         $this->service = new \Google_Service_Tasks($googleClient);
+        $googleClient->setAccessToken($token);
     }
     
     public function getTaskLists()

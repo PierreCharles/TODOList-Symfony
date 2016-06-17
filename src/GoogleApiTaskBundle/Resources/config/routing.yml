@@ -15,7 +15,7 @@ google_task_api_update:
     defaults : { _controller : GoogleApiTaskBundle:Default:update }
 google_task_api_logout:
     path: /google/logout
-    defaults : { _controller : GoogleApiTaskBundle:Default:disconnect }
+    defaults : { _controller : GoogleApiTaskBundle:Default:logout }
 google_task_api_showitems:
     path: /google/list/items/{taskList}
     defaults : { _controller : GoogleApiTaskBundle:Default:showItems }

@@ -38,7 +38,7 @@ class SecurityAuthenticator implements SimplePreAuthenticatorInterface, Authenti
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception) {
-        return new Response("Authentication on TodoList fail."); 
+        return new Response("Authentication on Google Api Task fail.");
     }
 
 }
