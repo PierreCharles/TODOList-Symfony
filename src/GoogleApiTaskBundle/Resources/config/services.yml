@@ -1,12 +1,12 @@
 services:
 
      google_task_api.security.authenticator:
-         class : GoogleApiTaskBundle\Security\SecurityAuthenticator
+         class    : GoogleApiTaskBundle\Security\SecurityAuthenticator
          
      google_task_api.security.access_denied:
-         class : GoogleApiTaskBundle\Security\AccessDenied
+         class    : GoogleApiTaskBundle\Security\AccessDenied
          arguments: ['@happyr.google.api.client']
 
      google_task_api.google.home:
-         class : GoogleApiTaskBundle\Google\TaskService
-         arguments : ['@happyr.google.api.client', '@security.token_storage']
+         class    : GoogleApiTaskBundle\Google\TaskService
+         arguments: ['@happyr.google.api.client', '@security.token_storage']

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Home {% endblock %}
+{% block body %}
+
+    <div class="row">
+
+        <a href='tasklist/new'>
+            <button class="btn btn-primary">Add Task List</button>
+        </a>
+
+        <ul class="collection">
+            {% if tasksLists|length>0 %}
+                <li class="collection-header"><h5></h5></li>
+                {% for taskList in tasksLists %}
+                    <li class="collection-item">Task list title :
+                        <a href='./tasklist/detail/{{ taskList.id }}'>{{ taskList.name }}</a> -
+                        <a href='tasklist/delete/{{ taskList.id }}'>Delete</a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p> No tasks list found</p>
+            {% endif %}
+
+        </ul>
+    </div>
+
+{% endblock %}

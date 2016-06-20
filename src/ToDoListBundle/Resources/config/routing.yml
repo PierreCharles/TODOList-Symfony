@@ -1,24 +1,44 @@
-app.ToDoList_index:
-    path: /
+todo_list_homepage:
+    path    : /todolist/tasklist
     defaults: { _controller: ToDoListBundle:ToDoList:index}
     methods : [ GET ]
 
-app.ToDoList_listTasks:
-  path: /listTasks
-  defaults: { _controller: ToDoListBundle:ToDoList:listTasks}
-  methods : [ GET ]
+todo_list_detail_tasks:
+    path:	/todolist/tasklist/detail/{idList}
+    defaults: { _controller: ToDoListBundle:TaskList:detailTasks }
+    methods: [ GET, POST ]
 
-app.ToDoList_addTask:
-  path : /addTask
-  defaults : { _controller: ToDoListBundle:ToDoList:addTask}
-  methods : [ GET ]
+todo_list_detail_task_list:
+    path:	/todolist/tasklist
+    defaults: { _controller: ToDoListBundle:TaskList:detailTaskList }
+    methods: [ GET ]
 
-app.ToDoList_updateTask:
-  path : /updateTask
-  defaults: { _controller: ToDoListBundle:ToDoList:updateTask}
-  methods: [ GET ]
+todo_list_add_task_list:
+    path:	/todolist/tasklist/new
+    defaults: { _controller: ToDoListBundle:TaskList:addTaskList }
+    methods: [ GET, POST ]
 
-app.ToDoList_deleteTask:
-  path : /deleteTask
-  defaults: { _controller: ToDoListBundle:ToDoList:deleteTask}
-  methods : [ POST ]
+todo_list_deletetasklist:
+    path:	/todolist/tasklist/delete/{idList}
+    defaults: { _controller: ToDoListBundle:TaskList:deleteTaskList }
+    methods: [ GET ]
+
+todo_list_updatetasklist:
+    path:	/todolist/tasklist/update/{idList}/
+    defaults: { _controller: ToDoListBundle:TaskList:updateTaskList }
+    methods: [ GET,  POST ]
+
+todo_list_get_task:
+    path:	/todolist/tasklist/task/{idTask}
+    defaults: { _controller: ToDoListBundle:Task:getTask }
+    methods: [ GET ]
+
+todo_list_delete_task:
+    path:	/todolist/tasklist/task/delete/{idTask}
+    defaults: { _controller: ToDoListBundle:Task:deleteTask }
+    methods: [ GET ]
+
+todo_list_update_task:
+    path:	/todolist/tasklist/task/update/{idTask}/
+    defaults: { _controller: ToDoListBundle:Task:updateTask }
+    methods: [ GET,  POST ]

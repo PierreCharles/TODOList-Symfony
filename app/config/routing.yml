@@ -2,9 +2,9 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-ToDoListBundle:
+todo_list:
     resource: "@ToDoListBundle/Resources/config/routing.yml"
-    prefix:   /todolist
+    prefix:   /
 
 
 google_task_api:

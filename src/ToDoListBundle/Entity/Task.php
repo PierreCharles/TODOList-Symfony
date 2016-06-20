@@ -5,7 +5,7 @@ namespace ToDoListBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Task.
+ * Task
  *
  * @ORM\Table(name="task")
  * @ORM\Entity(repositoryClass="ToDoListBundle\Repository\TaskRepository")
@@ -22,28 +22,27 @@ class Task
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
-    private $description;
+    private $statut;
 
     /**
-     * @var \DateTime
+     * @ORM\Column(type="integer")
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\ManyToOne(targetEntity="ToDoListBundle\Entity\Taskslist")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="taskListID", referencedColumnName="id")
+     * })
      */
-    private $date;
+    private $taskListID;
 
     /**
-     * Get id.
+     * Get id
      *
      * @return int
      */
@@ -53,7 +52,7 @@ class Task
     }
 
     /**
-     * Set name.
+     * Set name
      *
      * @param string $name
      *
@@ -67,7 +66,7 @@ class Task
     }
 
     /**
-     * Get name.
+     * Get name
      *
      * @return string
      */
@@ -77,50 +76,50 @@ class Task
     }
 
     /**
-     * Set description.
+     * Set statut
      *
-     * @param string $description
+     * @param string $statut
      *
      * @return Task
      */
-    public function setDescription($description)
+    public function setStatut($statut)
     {
-        $this->description = $description;
+        $this->statut = $statut;
 
         return $this;
     }
 
     /**
-     * Get description.
+     * Get statut
      *
      * @return string
      */
-    public function getDescription()
+    public function getStatut()
     {
-        return $this->description;
+        return $this->statut;
     }
 
     /**
-     * Set date.
+     * Set taskListID
      *
-     * @param \DateTime $date
+     * @param integer $taskListID
      *
      * @return Task
      */
-    public function setDate($date)
+    public function setTaskListID($taskListID)
     {
-        $this->date = $date;
+        $this->taskListID = $taskListID;
 
         return $this;
     }
 
     /**
-     * Get date.
+     * Get taskListID
      *
-     * @return \DateTime
+     * @return integer
      */
-    public function getDate()
+    public function getTaskListID()
     {
-        return $this->date;
+        return $this->taskListID;
     }
 }

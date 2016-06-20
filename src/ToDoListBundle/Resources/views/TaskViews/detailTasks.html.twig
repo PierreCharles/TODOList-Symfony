@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Home {% endblock %}
+{% block body %}
+
+
+<h1>{{ taskList.name }}</h1> --<a href='../update/{{ taskList.id }}'>Update</a>
+<ul>
+    {% for task in tasks %}
+        <li>
+            <a href='/todolist/tasklist/task/{{ task.id }}'> {{ task.name }}</a>
+        </li>
+    {% endfor %}
+    {% if tasks is empty %}
+        <p>No tasks found for list {{ taskList.id }}</p>
+    {% endif %}
+</ul>
+
+<h2>Create Task</h2>
+<div>
+    {{ form(form) }}
+</div>
+
+
+{% endblock %}
