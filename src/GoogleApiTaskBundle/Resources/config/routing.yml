@@ -1,31 +1,35 @@
 google_task_api_homepage:
-    path:     /google
-    defaults  : { _controller: GoogleApiTaskBundle:Default:list }
+  path: /google
+  defaults: { _controller: GoogleApiTaskBundle:Home:list }
 
 google_task_api_callback:
-    path:     /callback
-    defaults  : { _controller: GoogleApiTaskBundle:Default:callback }
+  path: /callback
+  defaults: { _controller: GoogleApiTaskBundle:Home:callback }
 
 google_task_api_list:
-    path:     /google/list
-    defaults  : { _controller : GoogleApiTaskBundle:Default:list }
+  path: /google/list
+  defaults: { _controller: GoogleApiTaskBundle:Home:list }
 
 google_task_api_delete:
-    path:     /google/delete/{taskList}
-    defaults  : { _controller : GoogleApiTaskBundle:Default:delete }
+  path: /google/delete/{taskList}
+  defaults: { _controller: GoogleApiTaskBundle:Home:delete }
 
 google_task_api_update:
-    path:     /google/update/{taskList}
-    defaults  : { _controller : GoogleApiTaskBundle:Default:update }
+  path: /google/update/{taskList}
+  defaults: { _controller: GoogleApiTaskBundle:Home:update }
 
 google_task_api_logout:
-    path:     /google/logout
-    defaults  : { _controller : GoogleApiTaskBundle:Default:logout }
+  path: /google/logout
+  defaults: { _controller: GoogleApiTaskBundle:Home:logout }
 
 google_task_api_showitems:
-    path:     /google/list/items/{taskList}
-    defaults  : { _controller : GoogleApiTaskBundle:Default:showItems }
+  path: /google/list/items/{taskList}
+  defaults: { _controller: GoogleApiTaskBundle:Home:showItems }
 
 google_task_api_listupdate:
-    path :    /google/list/update/{id}
-    defaults  : { _controller : GoogleApiTaskBundle:Default:updateList }
+  path: /google/list/update/{id}
+  defaults: { _controller: GoogleApiTaskBundle:Home:updateList }
+
+google_task_api_taskDetails:
+  path : /google/task/details/{taskList}
+  defaults: {_controller: GoogleApiTaskBundle:Home:taskDetails }

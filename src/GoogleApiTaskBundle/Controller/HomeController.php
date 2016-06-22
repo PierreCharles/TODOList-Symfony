@@ -8,24 +8,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\User;
 
-class DefaultController extends Controller
+class HomeController extends Controller
 {
 
     public function indexAction()
     {
-        return $this->render('GoogleApiTaskBundle:Default:index.html.twig');
+        return $this->render('GoogleApiTaskBundle:Home:index.html.twig');
     }
 
     public function simpleAction()
     {
-        return $this->render('GoogleApiTaskBundle:Default:index.html.twig');
+        return $this->render('GoogleApiTaskBundle:Home:index.html.twig');
     }
 
     public function callbackAction(Request $request)
     {
 
         if ($request->query->get('error')) {
-            return $this->render('GoogleApiTaskBundle:Default:index.html.twig');
+            return $this->render('GoogleApiTaskBundle:Home:index.html.twig');
         }
 
         if ($request->query->get('code')) {
@@ -65,7 +65,7 @@ class DefaultController extends Controller
             $tasks = $taskService->getTasksFromList($taskList->getId());
         }
 
-        return $this->render('GoogleApiTaskBundle:Default:index.html.twig', array('taskLists' => $taskLists));
+        return $this->render('GoogleApiTaskBundle:Home:index.html.twig', array('taskLists' => $taskLists));
     }
 
     public function deleteAction($taskList)
@@ -77,7 +77,7 @@ class DefaultController extends Controller
 
     public function updateAction($taskList)
     {
-        return $this->render('GoogleApiTaskBundle:Default:update.html.twig');
+        return $this->render('GoogleApiTaskBundle:Home:update.html.twig');
     }
 
 
@@ -87,7 +87,7 @@ class DefaultController extends Controller
         $tasks = $taskService->getTasksFromList($taskList);
         $taskLists = $taskService->getTaskLists($taskList);
 
-        return $this->render('GoogleApiTaskBundle:Default:items.html.twig', array('tasks' => $tasks, 'taskList' => $taskLists));
+        return $this->render('GoogleApiTaskBundle:Home:items.html.twig', array('tasks' => $tasks, 'taskList' => $taskLists));
     }
 
 }

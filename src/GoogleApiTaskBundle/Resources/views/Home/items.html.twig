@@ -8,7 +8,7 @@
         <ul class="collection">
                     <li class="collection-header"><h5></h5></li>
             {% for task in tasks %} 
-                        <li class="collection-item">Task title : <a href="/google/task/details/{{task.id}}">{{ task.title }}</a>
+                        <li class="collection-item">Task title : <a href="{{ path("google_task_api_taskDetails", {"taskList": task.id}) }}">{{ task.title }}</a>
                             </br>Due date : {{ task.due }}
                             </br>Status : {{ task.status }}
                         </li>
