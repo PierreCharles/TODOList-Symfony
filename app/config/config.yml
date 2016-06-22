@@ -3,7 +3,6 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@GoogleApiTaskBundle/Resources/config/services.yml" }
-    - { resource: "@ToDoListBundle/Resources/config/services.yml" }
 
 parameters:
     locale: en

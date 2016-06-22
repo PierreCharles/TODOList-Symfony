@@ -1,44 +1,44 @@
 todo_list_homepage:
-    path    : /todolist/tasklist
-    defaults: { _controller: ToDoListBundle:ToDoList:index}
-    methods : [ GET ]
+  path: /todolist/tasklist
+  defaults: { _controller: ToDoListBundle:ToDoList:index}
+  methods: [ GET ]
 
 todo_list_detail_tasks:
-    path:	/todolist/tasklist/detail/{idList}
-    defaults: { _controller: ToDoListBundle:TaskList:detailTasks }
-    methods: [ GET, POST ]
+  path:	/todolist/tasklist/detail/{idList}
+  defaults: { _controller: ToDoListBundle:TaskList:detailTasks }
+  methods: [ GET, POST ]
 
 todo_list_detail_task_list:
-    path:	/todolist/tasklist
-    defaults: { _controller: ToDoListBundle:TaskList:detailTaskList }
-    methods: [ GET ]
+  path:	/todolist/tasklist
+  defaults: { _controller: ToDoListBundle:TaskList:detailTaskList }
+  methods: [ GET ]
 
 todo_list_add_task_list:
-    path:	/todolist/tasklist/new
-    defaults: { _controller: ToDoListBundle:TaskList:addTaskList }
-    methods: [ GET, POST ]
+  path:	/todolist/tasklist/new
+  defaults: { _controller: ToDoListBundle:TaskList:addTaskList }
+  methods: [ GET, POST ]
 
 todo_list_deletetasklist:
-    path:	/todolist/tasklist/delete/{idList}
-    defaults: { _controller: ToDoListBundle:TaskList:deleteTaskList }
-    methods: [ GET ]
+  path:	/todolist/tasklist/delete/{idList}
+  defaults: { _controller: ToDoListBundle:TaskList:deleteTaskList }
+  methods: [ GET ]
 
 todo_list_updatetasklist:
-    path:	/todolist/tasklist/update/{idList}/
-    defaults: { _controller: ToDoListBundle:TaskList:updateTaskList }
-    methods: [ GET,  POST ]
+  path:	/todolist/tasklist/update/{idList}/
+  defaults: { _controller: ToDoListBundle:TaskList:updateTaskList }
+  methods: [ GET,  POST ]
 
 todo_list_get_task:
-    path:	/todolist/tasklist/task/{idTask}
-    defaults: { _controller: ToDoListBundle:Task:getTask }
-    methods: [ GET ]
+  path:	/todolist/tasklist/task/{idTask}
+  defaults: { _controller: ToDoListBundle:Task:getTask }
+  methods: [ GET ]
 
 todo_list_delete_task:
-    path:	/todolist/tasklist/task/delete/{idTask}
-    defaults: { _controller: ToDoListBundle:Task:deleteTask }
-    methods: [ GET ]
+  path:	/todolist/tasklist/task/delete/{idTask}
+  defaults: { _controller: ToDoListBundle:Task:deleteTask }
+  methods: [ GET ]
 
 todo_list_update_task:
-    path:	/todolist/tasklist/task/update/{idTask}/
-    defaults: { _controller: ToDoListBundle:Task:updateTask }
-    methods: [ GET,  POST ]
+  path:	/todolist/tasklist/task/update/{idTask}/
+  defaults: { _controller: ToDoListBundle:Task:updateTask }
+  methods: [ GET, POST ]
