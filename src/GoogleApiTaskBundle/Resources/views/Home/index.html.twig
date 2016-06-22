@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block title %} Task List{% endblock %}
+{% block title %}Task List{% endblock %}
 {% block body %}
 
-
     <div class="row home_choice">
-
         <div class="row">
             {% for taskList in taskLists %}
                 <div class="col s4 m4 ">
@@ -13,9 +11,9 @@
                             <span class="card-title">{{ taskList.title }}</span>
                         </div>
                         <div class="card-action">
-                            <a href='{{ path("google_task_api_showitems", "taskList": taskList.id) }}' ><span class=" grey-text text-lighten-3">Show items</span></a>
-                            <a href='{{ path("google_task_api_listupdate", "id": taskList.id) }}'><span class=" grey-text text-lighten-3">Update</span></a>
-                            <a href='{{ path("google_task_api_delete", "taskList": taskList.id) }}'><span class=" grey-text text-lighten-3">Delete</span></a>
+                            <a href='{{ path("google_task_api_showitems", { "taskList": taskList.id }) }}' ><span class=" grey-text text-lighten-3">Show items</span></a>
+                            <a href='{{ path("google_task_api_listupdate", { "id": taskList.id }) }}'><span class=" grey-text text-lighten-3">Update</span></a>
+                            <a href='{{ path("google_task_api_delete", { "taskList": taskList.id }) }}'><span class=" grey-text text-lighten-3">Delete</span></a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +21,6 @@
                 </div>
             {% endfor %}
         </div>
-
     </div>
             
 {% endblock %}

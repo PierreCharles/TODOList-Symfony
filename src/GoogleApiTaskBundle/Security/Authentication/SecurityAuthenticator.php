@@ -1,6 +1,6 @@
 <?php
 
-namespace GoogleApiTaskBundle\Security; ;
+namespace GoogleApiTaskBundle\Security\Authentication;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

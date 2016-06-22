@@ -10,22 +10,15 @@ use Symfony\Component\Security\Core\User\User;
 
 class HomeController extends Controller
 {
-
     public function indexAction()
-    {
-        return $this->render('GoogleApiTaskBundle:Home:index.html.twig');
-    }
-
-    public function simpleAction()
     {
         return $this->render('GoogleApiTaskBundle:Home:index.html.twig');
     }
 
     public function callbackAction(Request $request)
     {
-
         if ($request->query->get('error')) {
-            return $this->render('GoogleApiTaskBundle:Home:index.html.twig');
+            return $this->render('GoogleApiTaskBundle:Home:errorGoogle.html.twig');
         }
 
         if ($request->query->get('code')) {

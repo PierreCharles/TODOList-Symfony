@@ -1,6 +1,6 @@
 <?php
 
-namespace GoogleApiTaskBundle\Security;
+namespace GoogleApiTaskBundle\Security\Authorization;
 
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
