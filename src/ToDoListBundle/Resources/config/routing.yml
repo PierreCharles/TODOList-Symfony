@@ -5,27 +5,27 @@ todo_list_homepage:
 
 todo_list_detail_tasks:
   path:	/todolist/tasklist/detail/{idList}
-  defaults: { _controller: ToDoListBundle:TaskList:detailTasks }
+  defaults: { _controller: ToDoListBundle:ToDoList:detailTasks }
   methods: [ GET, POST ]
 
 todo_list_detail_task_list:
   path:	/todolist/tasklist
-  defaults: { _controller: ToDoListBundle:TaskList:detailTaskList }
+  defaults: { _controller: ToDoListBundle:ToDoList:detailTaskList }
   methods: [ GET ]
 
 todo_list_add_task_list:
   path:	/todolist/tasklist/new
-  defaults: { _controller: ToDoListBundle:TaskList:addTaskList }
+  defaults: { _controller: ToDoListBundle:ToDoList:addTaskList }
   methods: [ GET, POST ]
 
 todo_list_deletetasklist:
   path:	/todolist/tasklist/delete/{idList}
-  defaults: { _controller: ToDoListBundle:TaskList:deleteTaskList }
+  defaults: { _controller: ToDoListBundle:ToDoList:deleteTaskList }
   methods: [ GET ]
 
 todo_list_updatetasklist:
   path:	/todolist/tasklist/update/{idList}/
-  defaults: { _controller: ToDoListBundle:TaskList:updateTaskList }
+  defaults: { _controller: ToDoListBundle:ToDoList:updateTaskList }
   methods: [ GET,  POST ]
 
 todo_list_get_task:
