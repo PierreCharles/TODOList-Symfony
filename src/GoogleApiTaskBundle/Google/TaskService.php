@@ -24,7 +24,8 @@ class TaskService {
     {
         $token = json_decode($security->getToken()->getUser(), true);
         $googleClient = $client->getGoogleClient();
-        /*
+
+        /**
         // Refresh token
         if($googleClient->isAccessTokenExpired()) {
             // on récupère le refreshToken
@@ -34,7 +35,8 @@ class TaskService {
             $tokens = $client->getAccessToken();
             $client->setAccessToken($tokens);
         }
-        */
+         * */
+
         $this->service = new \Google_Service_Tasks($googleClient);
         $googleClient->setAccessToken($token);
     }
