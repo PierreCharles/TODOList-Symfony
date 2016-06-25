@@ -3,7 +3,9 @@
 namespace ToDoListBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use \Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use \Symfony\Component\HttpFoundation\Response;
 use ToDoListBundle\Entity\TaskList;
 use ToDoListBundle\Form\TaskListType;
 use ToDoListBundle\Entity\Task;
@@ -14,7 +16,7 @@ class ToDoListController extends Controller
     /**
      * Index Action to render the first template
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function indexAction()
     {
@@ -28,16 +30,16 @@ class ToDoListController extends Controller
      *
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse | Response
      */
     public function addTaskListAction(Request $request)
     {
         $taskList = new TaskList();
         $form = $this->get('form.factory')->create(TaskListType::class, $taskList);
         if ($form->handleRequest($request)->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($taskList);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($taskList);
+            $entityManager->flush();
             $request->getSession()->getFlashBag()->add('notice', 'TaskList saved.');
             return $this->redirect($this->generateUrl('todo_list_add_task_list'));
         }
@@ -50,7 +52,7 @@ class ToDoListController extends Controller
      * @param $idList
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse | Response
      */
     public function detailTasksAction($idList, Request $request)
     {
@@ -63,9 +65,9 @@ class ToDoListController extends Controller
         $form = $this->get('form.factory')->create(TaskType::class, $task);
 
         if ($form->handleRequest($request)->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($task);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
             $request->getSession()->getFlashBag()->add('notice', 'Task saved.');
             return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('idList' => $idList)));
         }
@@ -77,7 +79,7 @@ class ToDoListController extends Controller
     /**
      *  Render the taskLists
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function detailTaskListAction()
     {
@@ -97,7 +99,7 @@ class ToDoListController extends Controller
      *
      * @param $idList
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
     public function deleteTaskListAction($idList)
     {
@@ -114,12 +116,12 @@ class ToDoListController extends Controller
      * @param $idList
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse | Response
      */
     public function updateTaskListAction($idList, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $taskList = $em->getRepository('ToDoListBundle:TaskList')->find($idList);
+        $entityManager = $this->getDoctrine()->getManager();
+        $taskList = $entityManager->getRepository('ToDoListBundle:TaskList')->find($idList);
 
         if (!$taskList) {
             throw $this->createNotFoundException(
@@ -132,7 +134,7 @@ class ToDoListController extends Controller
         if ($form->handleRequest($request)->isValid()) {
             $data = $form->getData();
             $taskList->setName($data->getName());
-            $em->flush();
+            $entityManager->flush();
 
             return $this->redirect($this->generateUrl("detail"));
         }
