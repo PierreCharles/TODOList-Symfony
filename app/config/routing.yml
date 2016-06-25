@@ -1,12 +1,11 @@
 app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+  resource: "@AppBundle/Controller/"
+  type: annotation
 
 todo_list:
-    resource: "@ToDoListBundle/Resources/config/routing.yml"
-    prefix:   /
-
+  resource: "@ToDoListBundle/Resources/config/routing.yml"
+  prefix: /
 
 google_task_api:
-    resource: "@GoogleApiTaskBundle/Resources/config/routing.yml"
-    prefix:   /
+  resource: "@GoogleApiTaskBundle/Resources/config/routing.yml"
+  prefix: /
