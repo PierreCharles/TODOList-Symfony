@@ -29,17 +29,17 @@ class Task
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $statut;
+    private $value;
 
     /**
      * @ORM\Column(type="integer")
      *
-     * @ORM\ManyToOne(targetEntity="ToDoListBundle\Entity\Taskslist")
+     * @ORM\ManyToOne(targetEntity="ToDoListBundle\Entity\TaskList")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="taskListID", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="taskListId", referencedColumnName="id")
      * })
      */
-    private $taskListID;
+    private $taskListId;
 
     /**
      * Get id
@@ -76,15 +76,15 @@ class Task
     }
 
     /**
-     * Set statut
+     * Set value
      *
-     * @param string $statut
+     * @param string $value
      *
      * @return Task
      */
-    public function setStatut($statut)
+    public function setValue($value)
     {
-        $this->statut = $statut;
+        $this->value = $value;
 
         return $this;
     }
@@ -94,32 +94,32 @@ class Task
      *
      * @return string
      */
-    public function getStatut()
+    public function getValue()
     {
-        return $this->statut;
+        return $this->value;
     }
 
     /**
-     * Set taskListID
+     * Set taskListId
      *
-     * @param integer $taskListID
+     * @param integer $taskListId
      *
      * @return Task
      */
-    public function setTaskListID($taskListID)
+    public function setTaskListId($taskListId)
     {
-        $this->taskListID = $taskListID;
+        $this->taskListId = $taskListId;
 
         return $this;
     }
 
     /**
-     * Get taskListID
+     * Get taskListId
      *
      * @return integer
      */
-    public function getTaskListID()
+    public function getTaskListId()
     {
-        return $this->taskListID;
+        return $this->taskListId;
     }
 }

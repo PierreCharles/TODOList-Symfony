@@ -2,26 +2,66 @@
 {% block title %}Home {% endblock %}
 {% block body %}
 
+
     <div class="row">
 
+    <h1 style="text-align:center;">Task List Manager</h1>
+
+
+    {% if tasksLists|length>0 %}
+
+
+    <div class="center-block col-md-4 clearfix" style="float: none;">
         <a href='tasklist/new'>
-            <button class="btn btn-primary">Add Task List</button>
+            <button type="button" class="btn btn-primary">
+                Add new Task List
+            </button>
         </a>
+    </div>
 
-        <ul class="collection">
-            {% if tasksLists|length>0 %}
-                <li class="collection-header"><h5></h5></li>
-                {% for taskList in tasksLists %}
-                    <li class="collection-item">Task list title :
-                        <a href='./tasklist/detail/{{ taskList.id }}'>{{ taskList.name }}</a> -
-                        <a href='tasklist/delete/{{ taskList.id }}'>Delete</a>
-                    </li>
-                {% endfor %}
-            {% else %}
-                <p> No tasks list found</p>
-            {% endif %}
+    <br/>
+    <div class="center-block col-md-4 clearfix" style="float: none;">
 
+        <ul class="list-group">
+
+            {% for taskList in tasksLists %}
+                <li class="list-group-item clearfix">
+                    <div>
+                        Task list name : <b>{{ taskList.name }}</b>
+                        <div class="pull-right">
+                            <a href='./tasklist/detail/{{ taskList.id }}'>
+                                <button type="button" class="btn btn-default">
+                                    Show List
+                                </button>
+                            </a>
+                            <a href='./tasklist/update/{{ taskList.id }}'>
+                                <button type="button" class="btn btn-default">
+                                    Update
+                                </button>
+                            </a>
+                            <a href='tasklist/delete/{{ taskList.id }}'>
+                                <button type="button" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
         </ul>
+        {% else %}
+
+            <br/>
+            <div class="center-block col-md-2" style="float: none;">
+                <h2> No tasks lists found</h2>
+                <a href='tasklist/new'>
+                    <button type="button" class="btn btn-primary">
+                        Add new Task List
+                    </button>
+                </a>
+            </div>
+
+        {% endif %}
     </div>
 
 {% endblock %}

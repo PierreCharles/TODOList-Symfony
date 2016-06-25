@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}Home {% endblock %}
+{% block body %}
+
+
+
+    <div class="row">
+        <h1 style="text-align:center;">{{ taskList.name }}</h1>
+
+        <br/>
+
+        <div class="center-block col-md-2 list-group-item-text" style="float: none;">
+            <div>
+                {{ form(form) }}
+            </div>
+
+        </div>
+
+        <br/>      <br/>
+
+        {% if tasks|length>0 %}
+
+            <div class="center-block col-md-4 clearfix" style="float: none;">
+            <ul class=" list-group">
+
+            {% for task in tasks %}
+                <li class="list-group-item clearfix">
+                   <!--  <a href='/todolist/tasklist/task/{{ task.id }}'> {{ task.name }}</a> -->
+                    {{ task.id }} -> {{ task.name }}
+                    <div class="pull-right">
+                        <a href='./tasklist/task/detail/{{ task.id }}'>
+                            <button type="button" class="btn btn-default">
+                                Show List
+                            </button>
+                        </a>
+                        <a href='tasklist/task/delete/{{ task.id }}'>
+                            <button type="button" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <div class="center-block col-md-2" style="float: none;">
+                <h2> No tasks found</h2>
+            </div>
+
+        {% endif %}
+    </div>
+
+
+{% endblock %}

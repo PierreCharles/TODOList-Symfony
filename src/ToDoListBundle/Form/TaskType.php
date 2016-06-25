@@ -4,6 +4,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 class TaskType extends AbstractType
 {
     /**
@@ -13,10 +15,9 @@ class TaskType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('statut')
-            ->add('taskListID')
-            ->add('save', SubmitType::class)
+            ->add('name',  TextType::class , array('attr' => array('class' => 'form-control')))
+            ->add('value',TextType::class , array('attr' => array('class' => 'form-control')))
+            ->add('Add task', SubmitType::class, array('attr' => array('class' => 'form-control btn-primary margin-bottom-xs')))
         ;
     }
 

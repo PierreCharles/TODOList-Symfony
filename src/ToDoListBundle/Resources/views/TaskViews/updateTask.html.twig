@@ -3,10 +3,15 @@
 {% block title %}Home {% endblock %}
 {% block body %}
 
-
-<h1>Update Task</h1>
-{{ form(form) }}
-
+    <div class="row">
+        <h1 style="text-align:center;">Update Task</h1>
+        <br/>
+        <div class="center-block col-md-2 list-group-item-text" style="float: none;">
+            <div>
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}

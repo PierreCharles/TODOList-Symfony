@@ -26,7 +26,7 @@ class ToDoListController extends Controller
     }
 
     /**
-     * Action to add a taskList
+     * Action to add a TaskList
      *
      * @param Request $request
      *
@@ -41,7 +41,7 @@ class ToDoListController extends Controller
             $entityManager->persist($taskList);
             $entityManager->flush();
             $request->getSession()->getFlashBag()->add('notice', 'TaskList saved.');
-            return $this->redirect($this->generateUrl('todo_list_add_task_list'));
+            return $this->redirect($this->generateUrl('todo_list_homepage'));
         }
         return $this->render('ToDoListBundle:TaskViews:addTaskList.html.twig', array('form' => $form->createView(),));
     }
@@ -58,10 +58,10 @@ class ToDoListController extends Controller
     {
         $taskList = $this->getDoctrine()->getRepository('ToDoListBundle:TaskList')->find($idList);
         $repository = $this->getDoctrine()->getRepository('ToDoListBundle:Task');
-        $tasks = $repository->findByTaskListID($idList);
+        $tasks = $repository->findByTaskListId($idList);
 
         $task = new Task();
-        $task->setTaskListID($idList);
+        $task->setTaskListId($idList);
         $form = $this->get('form.factory')->create(TaskType::class, $task);
 
         if ($form->handleRequest($request)->isValid()) {
@@ -72,7 +72,7 @@ class ToDoListController extends Controller
             return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('idList' => $idList)));
         }
 
-        return $this->render('ToDoListBundle:TaskViews:detailTasks.html.twig', array('tasks' => $tasks, 'taskList' => $taskList, 'form' => $form->createView(),));
+        return $this->render('ToDoListBundle:TaskViews:listTasks.html.twig', array('tasks' => $tasks, 'taskList' => $taskList, 'form' => $form->createView(),));
 
     }
 
@@ -84,14 +84,14 @@ class ToDoListController extends Controller
     public function detailTaskListAction()
     {
         $repository = $this->getDoctrine()->getRepository('ToDoListBundle:TaskList');
-        $tasklists = $repository->findAll();
+        $taskLists = $repository->findAll();
 
-        if (!$tasklists) {
+        if (!$taskLists) {
             throw $this->createNotFoundException(
                 'No tasklist found.'
             );
         }
-        return $this->render('ToDoListBundle:TaskViews:index.html.twig', array('tasklists' => $tasklists));
+        return $this->render('ToDoListBundle:TaskViews:index.html.twig', array('tasklists' => $taskLists));
     }
 
     /**
@@ -116,7 +116,7 @@ class ToDoListController extends Controller
      * @param $idList
      * @param Request $request
      *
-     * @return RedirectResponse | Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function updateTaskListAction($idList, Request $request)
     {

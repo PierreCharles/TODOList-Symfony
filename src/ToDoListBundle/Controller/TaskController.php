@@ -39,24 +39,24 @@ class TaskController extends Controller
         $task = $entityManager->getRepository('ToDoListBundle:Task')->find($idTask);
         $entityManager->remove($task);
         $entityManager->flush();
-        return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('idList' => $task->getTaskListID())));
+        return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('idList' => $task->getTaskListId())));
     }
 
     /**
      * Action to update a Task
      *
-     * @param $idTask
+     * @param $taskId
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function updateTaskAction($idTask, Request $request)
+    public function updateTaskAction($taskId, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $task = $entityManager->getRepository('ToDoListBundle:Task')->find($idTask);
+        $task = $entityManager->getRepository('ToDoListBundle:Task')->find($taskId);
         if (!$task) {
             throw $this->createNotFoundException(
-                'No product found for id ' . $idTask
+                'No product found for this id : ' . $taskId
             );
         }
 
@@ -65,9 +65,9 @@ class TaskController extends Controller
             $data = $form->getData();
             $task->setName($data->getName());
             $task->setStatut($data->getStatut());
-            $task->setTaskListID($data->getTaskListID());
+            $task->setTaskListId($data->getTaskListId());
             $entityManager->flush();
-            return $this->redirect($this->generateUrl('todo_list_get_task', array('idTask' => $idTask)));
+            return $this->redirect($this->generateUrl('todo_list_get_task', array('idTask' => $taskId)));
         }
         return $this->render('ToDoListBundle:TaskViews:updateTask.html.twig', array('form' => $form->createView(),));
     }
