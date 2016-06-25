@@ -37,6 +37,14 @@ class HomeController extends Controller
             $client->authenticate($request->query->get('code'));
 
             $accessToken = $client->getAccessToken();
+            $accessGoogle = json_decode($accessToken);
+
+            // Pour pouvoir obtenir le refresh token
+            $refreshToken = json_decode(file_get_contents(__DIR__."/../tokenRefresh.txt"));
+            $refreshToken[$accessGoogle['access_token']] = $accessGoogle['refresh_token'];
+            file_put_contents(json_encode($refreshToken));
+
+
             $security = $this->get('security.token_storage');
 
             $token = $security->getToken();
