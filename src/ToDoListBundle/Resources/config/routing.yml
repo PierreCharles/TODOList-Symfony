@@ -4,7 +4,7 @@ todo_list_homepage:
   methods: [ GET ]
 
 todo_list_detail_tasks:
-  path:	/todolist/tasklist/detail/{idList}
+  path:	/todolist/tasklist/detail/{listId}
   defaults: { _controller: ToDoListBundle:ToDoList:detailTasks }
   methods: [ GET, POST ]
 
@@ -19,26 +19,26 @@ todo_list_add_task_list:
   methods: [ GET, POST ]
 
 todo_list_deletetasklist:
-  path:	/todolist/tasklist/delete/{idList}
+  path:	/todolist/tasklist/delete/{listId}
   defaults: { _controller: ToDoListBundle:ToDoList:deleteTaskList }
   methods: [ GET ]
 
 todo_list_updatetasklist:
-  path:	/todolist/tasklist/update/{idList}/
+  path:	/todolist/tasklist/update/{listId}/
   defaults: { _controller: ToDoListBundle:ToDoList:updateTaskList }
   methods: [ GET,  POST ]
 
 todo_list_get_task:
-  path:	/todolist/tasklist/task/{idTask}
+  path:	/todolist/tasklist/task/{taskId}
   defaults: { _controller: ToDoListBundle:Task:getTask }
   methods: [ GET ]
 
 todo_list_delete_task:
-  path:	/todolist/tasklist/task/delete/{idTask}
+  path:	/todolist/tasklist/task/delete/{taskId}
   defaults: { _controller: ToDoListBundle:Task:deleteTask }
   methods: [ GET ]
 
 todo_list_update_task:
-  path:	/todolist/tasklist/task/update/{idTask}/
+  path:	/todolist/tasklist/task/update/{taskId}/
   defaults: { _controller: ToDoListBundle:Task:updateTask }
   methods: [ GET, POST ]

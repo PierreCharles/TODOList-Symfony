@@ -26,14 +26,9 @@
             {% for task in tasks %}
                 <li class="list-group-item clearfix">
                    <!--  <a href='/todolist/tasklist/task/{{ task.id }}'> {{ task.name }}</a> -->
-                    {{ task.id }} -> {{ task.name }}
+                    <b>[{{ task.id }}] {{ task.name }} : </b> {{ task.value }}
                     <div class="pull-right">
-                        <a href='./tasklist/task/detail/{{ task.id }}'>
-                            <button type="button" class="btn btn-default">
-                                Show List
-                            </button>
-                        </a>
-                        <a href='tasklist/task/delete/{{ task.id }}'>
+                        <a href="{{ path('todo_list_delete_task', {'taskId': task.id}) }}">
                             <button type="button" class="btn btn-danger">
                                 Delete
                             </button>

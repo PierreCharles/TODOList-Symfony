@@ -29,17 +29,17 @@ class TaskController extends Controller
     /**
      * Action to delete a task
      *
-     * @param $idTask
+     * @param $taskId
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteTaskAction($idTask)
+    public function deleteTaskAction($taskId)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $task = $entityManager->getRepository('ToDoListBundle:Task')->find($idTask);
+        $task = $entityManager->getRepository('ToDoListBundle:Task')->find($taskId);
         $entityManager->remove($task);
         $entityManager->flush();
-        return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('idList' => $task->getTaskListId())));
+        return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('listId' => $task->getTaskListId())));
     }
 
     /**
@@ -64,10 +64,10 @@ class TaskController extends Controller
         if ($form->handleRequest($request)->isValid()) {
             $data = $form->getData();
             $task->setName($data->getName());
-            $task->setStatut($data->getStatut());
+            $task->setValue($data->getValue());
             $task->setTaskListId($data->getTaskListId());
             $entityManager->flush();
-            return $this->redirect($this->generateUrl('todo_list_get_task', array('idTask' => $taskId)));
+            return $this->redirect($this->generateUrl('todo_list_get_task', array('taskId' => $taskId)));
         }
         return $this->render('ToDoListBundle:TaskViews:updateTask.html.twig', array('form' => $form->createView(),));
     }

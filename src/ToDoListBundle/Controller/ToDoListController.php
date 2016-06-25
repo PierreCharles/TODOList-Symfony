@@ -49,19 +49,19 @@ class ToDoListController extends Controller
     /**
      * Action to print the details of a TaskList, the tasks
      *
-     * @param $idList
+     * @param $listId
      * @param Request $request
      *
      * @return RedirectResponse | Response
      */
-    public function detailTasksAction($idList, Request $request)
+    public function detailTasksAction($listId, Request $request)
     {
-        $taskList = $this->getDoctrine()->getRepository('ToDoListBundle:TaskList')->find($idList);
+        $taskList = $this->getDoctrine()->getRepository('ToDoListBundle:TaskList')->find($listId);
         $repository = $this->getDoctrine()->getRepository('ToDoListBundle:Task');
-        $tasks = $repository->findByTaskListId($idList);
+        $tasks = $repository->findByTaskListId($listId);
 
         $task = new Task();
-        $task->setTaskListId($idList);
+        $task->setTaskListId($listId);
         $form = $this->get('form.factory')->create(TaskType::class, $task);
 
         if ($form->handleRequest($request)->isValid()) {
@@ -69,7 +69,7 @@ class ToDoListController extends Controller
             $entityManager->persist($task);
             $entityManager->flush();
             $request->getSession()->getFlashBag()->add('notice', 'Task saved.');
-            return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('idList' => $idList)));
+            return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('listId' => $listId)));
         }
 
         return $this->render('ToDoListBundle:TaskViews:listTasks.html.twig', array('tasks' => $tasks, 'taskList' => $taskList, 'form' => $form->createView(),));
@@ -97,14 +97,14 @@ class ToDoListController extends Controller
     /**
      * Method to delete a taskList
      *
-     * @param $idList
+     * @param $listId
      *
      * @return RedirectResponse
      */
-    public function deleteTaskListAction($idList)
+    public function deleteTaskListAction($listId)
     {
         $em = $this->getDoctrine()->getManager();
-        $TaskList = $em->getRepository('ToDoListBundle:TaskList')->find($idList);
+        $TaskList = $em->getRepository('ToDoListBundle:TaskList')->find($listId);
         $em->remove($TaskList);
         $em->flush();
         return $this->redirect($this->generateUrl('todo_list_detail_task_list'));
@@ -113,19 +113,19 @@ class ToDoListController extends Controller
     /**
      * Method to update a taskList with his ID
      *
-     * @param $idList
+     * @param $listId
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function updateTaskListAction($idList, Request $request)
+    public function updateTaskListAction($listId, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $taskList = $entityManager->getRepository('ToDoListBundle:TaskList')->find($idList);
+        $taskList = $entityManager->getRepository('ToDoListBundle:TaskList')->find($listId);
 
         if (!$taskList) {
             throw $this->createNotFoundException(
-                'No product found for id ' . $idList
+                'No product found for id ' . $listId
             );
         }
 
