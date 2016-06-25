@@ -17,7 +17,7 @@ class TaskType extends AbstractType
         $builder
             ->add('name',  TextType::class , array('attr' => array('class' => 'form-control')))
             ->add('value',TextType::class , array('attr' => array('class' => 'form-control')))
-            ->add('Add task', SubmitType::class, array('attr' => array('class' => 'form-control btn-primary margin-bottom-xs')))
+            ->add('Save task', SubmitType::class, array('attr' => array('class' => 'form-control btn-primary margin-bottom-xs')))
         ;
     }
 

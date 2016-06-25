@@ -2,32 +2,41 @@
 {% block title %}Home {% endblock %}
 {% block body %}
 
-
-
     <div class="row">
+
+    <div class="center-block col-md-4 clearfix" style="float: none;">
+        <a href="{{ path('todo_list_homepage') }}">
+            <button type="button" class="btn btn-primary">
+                Tasks Lists
+            </button>
+        </a>
+    </div>
+
+    <div class="center-block col-md-2 list-group-item-text" style="float: none;">
+
         <h1 style="text-align:center;">{{ taskList.name }}</h1>
 
-        <br/>
-
-        <div class="center-block col-md-2 list-group-item-text" style="float: none;">
-            <div>
-                {{ form(form) }}
-            </div>
-
+        <div>
+            {{ form(form) }}
         </div>
 
-        <br/>      <br/>
+    </div>
 
-        {% if tasks|length>0 %}
+    <br/> <br/>
 
-            <div class="center-block col-md-4 clearfix" style="float: none;">
-            <ul class=" list-group">
+    {% if tasks|length>0 %}
 
+    <div class="center-block col-md-4 clearfix" style="float: none;">
+        <ul class=" list-group">
             {% for task in tasks %}
                 <li class="list-group-item clearfix">
-                   <!--  <a href='/todolist/tasklist/task/{{ task.id }}'> {{ task.name }}</a> -->
                     <b>[{{ task.id }}] {{ task.name }} : </b> {{ task.value }}
                     <div class="pull-right">
+                        <a href="{{ path('todo_list_update_task', {'taskId': task.id}) }}">
+                            <button type="button" class="btn btn-default">
+                                Update
+                            </button>
+                        </a>
                         <a href="{{ path('todo_list_delete_task', {'taskId': task.id}) }}">
                             <button type="button" class="btn btn-danger">
                                 Delete
@@ -36,7 +45,7 @@
                     </div>
                 </li>
             {% endfor %}
-            </ul>
+        </ul>
         {% else %}
             <div class="center-block col-md-2" style="float: none;">
                 <h2> No tasks found</h2>

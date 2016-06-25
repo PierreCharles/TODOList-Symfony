@@ -29,17 +29,17 @@
                     <div>
                         Task list name : <b>{{ taskList.name }}</b>
                         <div class="pull-right">
-                            <a href='./tasklist/detail/{{ taskList.id }}'>
+                            <a href='{{ path('todo_list_tasks_list', {'listId': taskList.id}) }}'>
                                 <button type="button" class="btn btn-default">
                                     Show List
                                 </button>
                             </a>
-                            <a href='./tasklist/update/{{ taskList.id }}'>
+                            <a href='{{ path('todo_list_update_tasks_list', {'listId': taskList.id}) }}'>
                                 <button type="button" class="btn btn-default">
                                     Update
                                 </button>
                             </a>
-                            <a href='tasklist/delete/{{ taskList.id }}'>
+                            <a href='{{ path('todo_list_delete_tasks_list', {'listId': taskList.id}) }}'>
                                 <button type="button" class="btn btn-danger">
                                     Delete
                                 </button>
@@ -54,7 +54,7 @@
             <br/>
             <div class="center-block col-md-2" style="float: none;">
                 <h2> No tasks lists found</h2>
-                <a href='tasklist/new'>
+                <a href='{{ path(todo_list_add_task_list) }}'>
                     <button type="button" class="btn btn-primary">
                         Add new Task List
                     </button>

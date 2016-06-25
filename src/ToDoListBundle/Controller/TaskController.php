@@ -11,20 +11,6 @@ use ToDoListBundle\Form\TaskType;
 
 class TaskController extends Controller
 {
-    /**
-     * Action to get a Task with his Id
-     *
-     * @param $idTask
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function getTaskAction($idTask, Request $request)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $task = $entityManager->getRepository('ToDoListBundle:Task')->find($idTask);
-        return $this->render('ToDoListBundle:TaskViews:getTask.html.twig', array('task' => $task));
-    }
 
     /**
      * Action to delete a task
@@ -39,7 +25,7 @@ class TaskController extends Controller
         $task = $entityManager->getRepository('ToDoListBundle:Task')->find($taskId);
         $entityManager->remove($task);
         $entityManager->flush();
-        return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('listId' => $task->getTaskListId())));
+        return $this->redirect($this->generateUrl('todo_list_tasks_list', array('listId' => $task->getTaskListId())));
     }
 
     /**
@@ -55,9 +41,8 @@ class TaskController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $task = $entityManager->getRepository('ToDoListBundle:Task')->find($taskId);
         if (!$task) {
-            throw $this->createNotFoundException(
-                'No product found for this id : ' . $taskId
-            );
+            return $this->render('ToDoListBundle:TaskViews:errorPage.html.twig',
+                array('errorMessage' => 'No product found for this id : ' . $taskId));
         }
 
         $form = $this->get('form.factory')->create(TaskType::class, $task);
@@ -67,7 +52,7 @@ class TaskController extends Controller
             $task->setValue($data->getValue());
             $task->setTaskListId($data->getTaskListId());
             $entityManager->flush();
-            return $this->redirect($this->generateUrl('todo_list_get_task', array('taskId' => $taskId)));
+            return $this->redirect($this->generateUrl('todo_list_tasks_list', array('listId' => $task->getTaskListId())));
         }
         return $this->render('ToDoListBundle:TaskViews:updateTask.html.twig', array('form' => $form->createView(),));
     }

@@ -40,10 +40,10 @@ class ToDoListController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($taskList);
             $entityManager->flush();
-            $request->getSession()->getFlashBag()->add('notice', 'TaskList saved.');
+            $request->getSession()->getFlashBag()->add('notice', 'TaskList added.');
             return $this->redirect($this->generateUrl('todo_list_homepage'));
         }
-        return $this->render('ToDoListBundle:TaskViews:addTaskList.html.twig', array('form' => $form->createView(),));
+        return $this->render('ToDoListBundle:TaskViews:addTasksList.html.twig', array('form' => $form->createView(),));
     }
 
     /**
@@ -69,11 +69,9 @@ class ToDoListController extends Controller
             $entityManager->persist($task);
             $entityManager->flush();
             $request->getSession()->getFlashBag()->add('notice', 'Task saved.');
-            return $this->redirect($this->generateUrl('todo_list_detail_tasks', array('listId' => $listId)));
+            return $this->redirect($this->generateUrl('todo_list_tasks_list', array('listId' => $listId)));
         }
-
         return $this->render('ToDoListBundle:TaskViews:listTasks.html.twig', array('tasks' => $tasks, 'taskList' => $taskList, 'form' => $form->createView(),));
-
     }
 
     /**
@@ -87,9 +85,8 @@ class ToDoListController extends Controller
         $taskLists = $repository->findAll();
 
         if (!$taskLists) {
-            throw $this->createNotFoundException(
-                'No tasklist found.'
-            );
+            return $this->render('ToDoListBundle:TaskViews:errorPage.html.twig',
+                array('errorMessage' => 'No task list found'));
         }
         return $this->render('ToDoListBundle:TaskViews:index.html.twig', array('tasklists' => $taskLists));
     }
@@ -103,11 +100,11 @@ class ToDoListController extends Controller
      */
     public function deleteTaskListAction($listId)
     {
-        $em = $this->getDoctrine()->getManager();
-        $TaskList = $em->getRepository('ToDoListBundle:TaskList')->find($listId);
-        $em->remove($TaskList);
-        $em->flush();
-        return $this->redirect($this->generateUrl('todo_list_detail_task_list'));
+        $entityManager = $this->getDoctrine()->getManager();
+        $TaskList = $entityManager->getRepository('ToDoListBundle:TaskList')->find($listId);
+        $entityManager->remove($TaskList);
+        $entityManager->flush();
+        return $this->redirect($this->generateUrl('todo_list_homepage'));
     }
 
     /**
@@ -124,9 +121,8 @@ class ToDoListController extends Controller
         $taskList = $entityManager->getRepository('ToDoListBundle:TaskList')->find($listId);
 
         if (!$taskList) {
-            throw $this->createNotFoundException(
-                'No product found for id ' . $listId
-            );
+            return $this->render('ToDoListBundle:TaskViews:errorPage.html.twig',
+                array('errorMessage' => 'No tasks list found for id : ' . $listId));
         }
 
         $form = $this->get('form.factory')->create(TaskListType::class, $taskList);
@@ -135,10 +131,8 @@ class ToDoListController extends Controller
             $data = $form->getData();
             $taskList->setName($data->getName());
             $entityManager->flush();
-
-            return $this->redirect($this->generateUrl("detail"));
+            return $this->redirect($this->generateUrl("todo_list_homepage"));
         }
-
         return $this->render('ToDoListBundle:TaskViews:updateTaskList.html.twig', array('form' => $form->createView(),));
     }
 
