@@ -9,3 +9,7 @@ todo_list:
 google_task_api:
   resource: "@GoogleApiTaskBundle/Resources/config/routing.yml"
   prefix: /
+
+fos_user:
+  resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+  prefix: /

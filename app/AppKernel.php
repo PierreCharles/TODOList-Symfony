@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new HappyR\Google\ApiBundle\HappyRGoogleApiBundle(),
             new GoogleApiTaskBundle\GoogleApiTaskBundle(),
             new ToDoListBundle\ToDoListBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new UserBundle\UserBundle(),
             new AppBundle\AppBundle(),
         ];
 
