@@ -32,7 +32,7 @@ class ToDoListController extends Controller
      *
      * @return RedirectResponse | Response
      */
-    public function addTaskListAction(Request $request)
+    public function addTasksListAction(Request $request)
     {
         $taskList = new TaskList();
         $form = $this->get('form.factory')->create(TaskListType::class, $taskList);
@@ -54,7 +54,7 @@ class ToDoListController extends Controller
      *
      * @return RedirectResponse | Response
      */
-    public function detailTasksAction($listId, Request $request)
+    public function listTasksAction($listId, Request $request)
     {
         $taskList = $this->getDoctrine()->getRepository('ToDoListBundle:TaskList')->find($listId);
         $repository = $this->getDoctrine()->getRepository('ToDoListBundle:Task');
@@ -79,7 +79,7 @@ class ToDoListController extends Controller
      *
      * @return Response
      */
-    public function detailTaskListAction()
+    public function listTaskListAction()
     {
         $repository = $this->getDoctrine()->getRepository('ToDoListBundle:TaskList');
         $taskLists = $repository->findAll();
@@ -98,7 +98,7 @@ class ToDoListController extends Controller
      *
      * @return RedirectResponse
      */
-    public function deleteTaskListAction($listId)
+    public function deleteTasksListAction($listId)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $TaskList = $entityManager->getRepository('ToDoListBundle:TaskList')->find($listId);
@@ -115,7 +115,7 @@ class ToDoListController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function updateTaskListAction($listId, Request $request)
+    public function updateTasksListAction($listId, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $taskList = $entityManager->getRepository('ToDoListBundle:TaskList')->find($listId);
