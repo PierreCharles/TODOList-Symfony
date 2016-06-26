@@ -1,26 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block title %}Task List{% endblock %}
 {% block body %}
-    <fieldset>
-        <p>Ajouter une taskList :</p>
-        <form method="POST" action="{{ path("google_task_api_addTaskList") }}">
-            <input type="text" name="title" placeholder="Title" required="" />
-            <input type="submit" value="créer">
-        </form>
-    </fieldset>
 
-    <div class="row home_choice">
-        <div class="row">
+    <div class="center-block col-md-2 list-group-item-text" style="float: none; border:1px solid darkgrey">
+
+        <h2>Add a taskList</h2>
+        <form method="POST" action="{{ path("google_task_api_addTaskList") }}">
+            <input type="text" name="title" placeholder="Title" required=""/>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+        <br/>
+    </div>
+
+    <br/>
+
+    <div class="center-block col-md-4 clearfix" style="float: none;">
+        <ul class="list-group">
+
             {% for taskList in taskLists %}
-                <div class="col s4 m4 ">
-                    <div class="card deep-orange lighten-2">
-                        <div class="card-content white-text">
-                            <span class="card-title">{{ taskList.title }}</span>
-                        </div>
-                        <div class="card-action">
-                            <a href='{{ path("google_task_api_showitems", { "taskList": taskList.id }) }}' ><span class=" grey-text text-lighten-3">Show items</span></a>
-                            <a href="#" id="updateTaskList"><span class=" grey-text text-lighten-3">Update</span></a>
-                            <a href='{{ path("google_task_api_delete", { "taskList": taskList.id }) }}'><span class=" grey-text text-lighten-3">Delete</span></a>
+                <li class="list-group-item clearfix">
+                    <div>
+                        <span class="card-title">{{ taskList.title }}</span>
+                        <div class="pull-right">
+                            <a href='{{ path("google_task_api_showitems", { "taskList": taskList.id }) }}'>
+                                <button type="button" class="btn btn-default">
+                                    Show items
+                                </button>
+                            </a>
+                            <a href='#' id="updateTaskList">
+                                <button type="button" class="btn btn-default">
+                                    Update
+                                </button>
+                            </a>
+                            <a href='{{ path("google_task_api_delete", { "taskList": taskList.id }) }}'>
+                                <button type="button" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </a>
                         </div>
                         <div style="display:none;" id="updateFormTaskList">
                             <form id="formUpdate">
@@ -31,11 +47,9 @@
                             </form>
                         </div>
                     </div>
-                </div>
-                <div class="col s1 m1">
-                </div>
+                </li>
             {% endfor %}
-        </div>
+        </ul>
     </div>
-            
+
 {% endblock %}

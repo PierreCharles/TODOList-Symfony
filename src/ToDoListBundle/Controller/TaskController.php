@@ -13,7 +13,7 @@ class TaskController extends Controller
 {
 
     /**
-     * Action to delete a task
+     * Delete a task
      *
      * @param $taskId
      *
@@ -29,7 +29,7 @@ class TaskController extends Controller
     }
 
     /**
-     * Action to update a Task
+     * Update a Task
      *
      * @param $taskId
      * @param Request $request

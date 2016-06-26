@@ -1,23 +1,28 @@
 {% extends 'base.html.twig' %}
 {% block title %} Task List Items{% endblock %}
 {% block body %}
-    <p>Ajout d'une tâche</p>
-    <form id="addTask">
-        <input type="text" placeholder="titre tâche" name="title">
-        <input type="hidden" value="{{ idTaskList }}" name="idTaskLists">
-        <input type="hidden" value="{{ path("google_task_api_addTask") }}" id="url">
-        <input type="button" value="ajouter" id="buttonTask">
-    </form>
-<br>
-    <div class="row">
-        <ul class="collection">
-            <div class="row">
+
+    <div class="center-block col-md-2 list-group-item-text" style="float: none; border:1px solid darkgrey">
+        <h2>Add a task</h2>
+        <form id="addTask">
+            <input type="text" placeholder="task title" name="title">
+            <input type="hidden" value="{{ idTaskList }}" name="idTaskLists">
+            <input type="hidden" value="{{ path("google_task_api_addTask") }}" id="url">
+            <button type="button" id="buttonTask" class="btn btn-primary">Add</button>
+        </form>
+        <br>
+    </div>
+
+    <br>
+
+    <div class="center-block col-md-4 clearfix" style="float: none;">
+        <ul class="list-group">
             {% for task in tasks %}
                 {% if task.title == "" %}
                     {% set continue = true %}
                 {% else %}
                     <div class="col-md-3">
-                        <li class="collection-item">Task title : <a href="#" class="updateTask">{{ task.title }}</a>
+                        <li class="collection-item">Task title : <a href="#" class="updateTask">{{ task.title }}</a></li>
                             <div style="display:none;" id="updateTaskDisplay">
                                 <form id="formUpdateTask">
                                     <input type="text" required="" value="{{ task.title }}" id="titleUpdate" name="titleUpdate">
@@ -28,11 +33,10 @@
                                 </form>
                             </div>
                             </br>Status : {{ task.status }}
-                        </li>
-                    </div>
-                {% endif %}
+                        </div>
+                    {% endif %}
+                </li>
             {% endfor %}
-            </div>
         </ul>
     </div>
     <script>
