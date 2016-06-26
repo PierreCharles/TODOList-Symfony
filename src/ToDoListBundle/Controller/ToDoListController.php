@@ -14,7 +14,7 @@ use ToDoListBundle\Form\TaskType;
 class ToDoListController extends Controller
 {
     /**
-     * Index Action to render the first template
+     * Index
      *
      * @return Response
      */
@@ -26,7 +26,7 @@ class ToDoListController extends Controller
     }
 
     /**
-     * Action to add a TaskList
+     * Add a TasksList
      *
      * @param Request $request
      *
@@ -47,7 +47,7 @@ class ToDoListController extends Controller
     }
 
     /**
-     * Action to print the details of a TaskList, the tasks
+     * Display the details of a TasksList
      *
      * @param $listId
      * @param Request $request
@@ -75,7 +75,7 @@ class ToDoListController extends Controller
     }
 
     /**
-     *  Render the taskLists
+     *  display the tasks list
      *
      * @return Response
      */
@@ -92,7 +92,7 @@ class ToDoListController extends Controller
     }
 
     /**
-     * Method to delete a taskList
+     * Delete a tasksList
      *
      * @param $listId
      *
@@ -108,7 +108,7 @@ class ToDoListController extends Controller
     }
 
     /**
-     * Method to update a taskList with his ID
+     * Update a tasksList with id
      *
      * @param $listId
      * @param Request $request
