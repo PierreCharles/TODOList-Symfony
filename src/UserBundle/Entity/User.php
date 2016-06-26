@@ -23,13 +23,11 @@ class User extends BaseUser
      */
     protected $id;
 
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=255)
-     */
-    private $login;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
 
     /**
@@ -42,28 +40,5 @@ class User extends BaseUser
         return $this->id;
     }
 
-    /**
-     * Set login
-     *
-     * @param string $login
-     *
-     * @return User
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
 }
 

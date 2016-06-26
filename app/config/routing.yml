@@ -12,4 +12,3 @@ google_task_api:
 
 fos_user:
   resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-  prefix: /
