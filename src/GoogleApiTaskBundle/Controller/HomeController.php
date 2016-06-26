@@ -178,6 +178,7 @@ class HomeController extends Controller
         $taskList = new Google_Service_Tasks_TaskList();
 
         $taskList->setTitle($newTitle);
+        $taskList->setId($idTaskLists);
 
         $this->get('google_task_api.google.home')->updateTaskList($idTaskLists, $taskList);
 
