@@ -5,7 +5,7 @@
     <div class="center-block col-md-2 list-group-item-text" style="float: none; border:1px solid darkgrey">
         <h2>Add a task</h2>
         <form id="addTask">
-            <input type="text" placeholder="titre tâche" name="title">
+            <input type="text" placeholder="task title" name="title">
             <input type="hidden" value="{{ idTaskList }}" name="idTaskLists">
             <input type="hidden" value="{{ path("google_task_api_addTask") }}" id="url">
             <button type="button" id="buttonTask" class="btn btn-primary">Add</button>
