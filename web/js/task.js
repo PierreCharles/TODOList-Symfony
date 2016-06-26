@@ -31,14 +31,14 @@ $(document).ready(function() {
             }
         });
     });
-
+    
     $('.updateTask').bind('click', function() {
         $('#updateTaskDisplay').toggle();
     });
 
     $('#clickUpdateTask').bind('click', function () {
         var formSerializeTask = $('#formUpdateTask').serialize();
-        
+
         $.ajax({
             url: $('#urlTask').val(),
             type: "post",
