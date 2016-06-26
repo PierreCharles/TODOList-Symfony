@@ -212,4 +212,19 @@ class HomeController extends Controller
 
         return new JsonResponse(array('status'=> 'OK'));
     }
+
+    /**
+     * Method to return the number of tasks
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function getNbTasksAction(Request $request)
+    {
+        $taskService = $this->get('google_task_api.google.home');
+        $tasks = $taskService->getTasksFromList($request->request->get('idTaskList'));
+
+        return new JsonResponse(array('status'=>'OK', 'nbTasks'=> count($tasks)));
+    }
 }
