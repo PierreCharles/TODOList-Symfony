@@ -12,7 +12,7 @@
 
 
     <div class="center-block col-md-4 clearfix" style="float: none;">
-        <a href='tasklist/new'>
+        <a href="{{ path('todo_list_add_tasks_list')}}">
             <button type="button" class="btn btn-primary">
                 Add new Task List
             </button>
@@ -54,7 +54,7 @@
             <br/>
             <div class="center-block col-md-2" style="float: none;">
                 <h2> No tasks lists found</h2>
-                <a href='{{ path(todo_list_add_task_list) }}'>
+                <a href="{{ path('todo_list_add_tasks_list') }}">
                     <button type="button" class="btn btn-primary">
                         Add new Task List
                     </button>
