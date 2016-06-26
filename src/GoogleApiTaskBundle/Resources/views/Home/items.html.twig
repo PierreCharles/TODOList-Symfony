@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title %} Task List Items{% endblock %}
 {% block body %}
-
+    <p>Ajout d'une tâche</p>
+    <form id="addTask">
+        <input type="text" placeholder="titre tâche" name="title">
+        <input type="hidden" value="{{ idTaskList }}" name="idTaskLists">
+        <input type="hidden" value="{{ path("google_task_api_addTask") }}" id="url">
+        <input type="button" value="ajouter" id="buttonTask">
+    </form>
+<br>
     <div class="row">
         <ul class="collection">
             <div class="row">

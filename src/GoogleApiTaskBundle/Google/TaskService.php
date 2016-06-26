@@ -25,17 +25,17 @@ class TaskService {
         $token = json_decode($security->getToken()->getUser(), true);
         $googleClient = $client->getGoogleClient();
 
-        /**
-        // Refresh token
+        /*
+        // Refresh token, can't use it because the method isAccessTokenExpired return all the time true
         if($googleClient->isAccessTokenExpired()) {
             // on récupère le refreshToken
-            $refreshesToken = file_get_contents(__DIR__."/../tokenRefresh.txt");
+            $refreshesToken = json_decode(file_get_contents(__DIR__."/../tokenRefresh.txt"), true);
 
             $googleClient->refreshToken($refreshesToken[$security->getToken()]);
             $tokens = $client->getAccessToken();
             $client->setAccessToken($tokens);
         }
-         * */
+        */
 
         $this->service = new \Google_Service_Tasks($googleClient);
         $googleClient->setAccessToken($token);
@@ -70,6 +70,28 @@ class TaskService {
      */
     public function deleteTasksList($taskList)
     {
-      $this->service->tasklists->delete($taskList);
+        $this->service->tasklists->delete($taskList);
     }
+
+    /**
+     * Add a TaskList
+     *
+     * @param $taskList
+     */
+    public function addTaskList($taskList)
+    {
+        $this->service->tasklists->insert($taskList);
+    }
+
+    /**
+     * Add a task in a task list with his Id
+     *
+     * @param $idTaskList
+     * @param $task
+     */
+    public function addTaskInTaskLists($idTaskList, $task)
+    {
+        $this->service->tasks->insert($idTaskList, $task);
+    }
+
 }
