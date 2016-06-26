@@ -22,19 +22,14 @@
                     {% if task.title == "" %}
                         {% set continue = true %}
                     {% else %}
-
-
                         <div>
                             <span class="card-title"> Task title :
                                 <a href="{{ path("google_task_api_taskDetails", {"taskList": task.id}) }}">{{ task.title }}
                                 </a>
                             </span>
-
                             </br>Due date : {{ task.due }}
                             </br>Status : {{ task.status }}
-
                         </div>
-
                     {% endif %}
                 </li>
             {% endfor %}

@@ -1,16 +1,15 @@
 <?php
 
-namespace UserBundle\Entity;
+namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -24,12 +23,6 @@ class User extends BaseUser
     protected $id;
 
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-
     /**
      * Get id
      *
@@ -40,5 +33,12 @@ class User extends BaseUser
         return $this->id;
     }
 
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }
 
