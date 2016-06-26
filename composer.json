@@ -39,7 +39,9 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "mkdir -p $(pwd)/web/vendor && mkdir -p $(pwd)/web/vendor/bootstrap && mkdir -p $(pwd)/web/vendor/jquery"
+            "mkdir -p $(pwd)/web/vendor && mkdir -p $(pwd)/web/vendor/bootstrap && mkdir -p $(pwd)/web/vendor/jquery",
+            "cp -r $(pwd)/vendor/twitter/bootstrap/dist/. $(pwd)/web/vendor/bootstrap/",
+            "cp $(pwd)/vendor/components/jquery/jquery.min.js $(pwd)/web/vendor/jquery/"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
