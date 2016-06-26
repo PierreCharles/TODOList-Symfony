@@ -27,7 +27,7 @@ google_task_api_showitems:
   defaults: { _controller: GoogleApiTaskBundle:Home:showItems }
 
 google_task_api_listupdate:
-  path: /google/list/update/{id}
+  path: /google/list/update
   defaults: { _controller: GoogleApiTaskBundle:Home:updateList }
 
 google_task_api_taskDetails:

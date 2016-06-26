@@ -19,8 +19,16 @@
                         </div>
                         <div class="card-action">
                             <a href='{{ path("google_task_api_showitems", { "taskList": taskList.id }) }}' ><span class=" grey-text text-lighten-3">Show items</span></a>
-                            <a href='{{ path("google_task_api_listupdate", { "id": taskList.id }) }}'><span class=" grey-text text-lighten-3">Update</span></a>
+                            <a href="#" id="updateTaskList"><span class=" grey-text text-lighten-3">Update</span></a>
                             <a href='{{ path("google_task_api_delete", { "taskList": taskList.id }) }}'><span class=" grey-text text-lighten-3">Delete</span></a>
+                        </div>
+                        <div style="display:none;" id="updateFormTaskList">
+                            <form action="{{ path('google_task_api_listupdate') }}" method="POST" id="formUpdate">
+                                <input type="text" required="" value="{{ taskList.title }}" id="titleUpdate" name="titleUpdate">
+                                <input type="hidden" id="idTaskList" value="{{ taskList.id }}" name="idTaskList">
+                                <input type="hidden" value="{{ path('google_task_api_listupdate') }}" id="url">
+                                <input type="submit" value="Modifier" id="">
+                            </form>
                         </div>
                     </div>
                 </div>

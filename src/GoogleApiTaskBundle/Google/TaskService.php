@@ -94,4 +94,14 @@ class TaskService {
         $this->service->tasks->insert($idTaskList, $task);
     }
 
+    /**
+     * Method to update a taskList
+     *
+     * @param $idTaskList
+     * @param $taskList
+     */
+    public function updateTaskList($idTaskList, $taskList)
+    {
+        $this->service->tasklists->update($idTaskList, $taskList);
+    }
 }

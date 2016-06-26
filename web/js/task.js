@@ -13,4 +13,22 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#updateTaskList').bind('click', function() {
+        $('#updateFormTaskList').toggle();
+    });
+
+    $('#clickUpdateTaskList').bind('click', function() {
+        var formSerializeTaskList = $('#formUpdate').serialize();
+ 
+        $.ajax({
+            url: $('#url').val(),
+            type: "post",
+            data: formSerializeTaskList
+        }).done(function (response, textStatus, jqXHR){
+            if(response.status == "OK") {
+                window.location.reload();
+            }
+        });
+    });
 });
