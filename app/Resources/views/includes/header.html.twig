@@ -52,32 +52,9 @@
                                                    class="btn btn-go btn-block">Google +</a>
                                             </div>
                                             or
-                                            <form class="form" role="form" method="post" action="login"
-                                                  accept-charset="UTF-8" id="login-nav">
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="exampleInputEmail2">Email
-                                                        address</label>
-                                                    <input type="text" class="form-control" id="login"
-                                                           placeholder="Login" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="password">Password</label>
-                                                    <input type="password" class="form-control"
-                                                           id="exampleInputPassword2"
-                                                           placeholder="Password" required>
-                                                    <div class="help-block text-right">
-                                                        <a href="#">Forget the password ?</a>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Sign in
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="bottom text-center">
-                                            New here ? <a href="#"><b>Join Us</b></a>
-                                        </div>
+                                            <div class="social-buttons">
+                                                <a href="{{ path('todo_list_homepage') }}" id='todolist' class="btn btn-tdl btn-block">Default ToDoList</a>
+                                            </div>
                                     </div>
                                 </li>
                             </ul>

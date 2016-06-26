@@ -27,11 +27,22 @@
     color: #fff;
     background-color:#dd4b39;
 }
+
+.btn-tdl{
+    color: #fff;
+    background-color: #218BC3;
+}
+
 .btn-go:hover{
     color: #fff;
     box-shadow: inset 0 -1px 0 #bd3d2a;
     background-color: #b33e2e;
     border-bottom-color: #bd3d2a;
+}
+
+.btn-tdl:hover{
+    color: #fff;
+    background-color: #0D3349;
 }
 
 @media(max-width:768px){
