@@ -31,5 +31,13 @@ google_task_api_listupdate:
   defaults: { _controller: GoogleApiTaskBundle:Home:updateList }
 
 google_task_api_taskDetails:
-  path : /google/task/details/{taskList}
+  path: /google/task/details/{taskList}
   defaults: {_controller: GoogleApiTaskBundle:Home:taskDetails }
+
+google_task_api_addTaskList:
+  path: /google/task/addTaskList
+  defaults: {_controller: GoogleApiTaskBundle:Home:addTaskList }
+
+google_task_api_addTask:
+  path: /google/task/addTask
+  defaults: {_controller: GoogleApiTaskBundle:Home:addTaskInTaskLists }

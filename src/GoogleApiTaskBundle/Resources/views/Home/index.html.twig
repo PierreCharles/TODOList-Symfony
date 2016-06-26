@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block title %}Task List{% endblock %}
 {% block body %}
+    <fieldset>
+        <p>Ajouter une taskList :</p>
+        <form method="POST" action="{{ path("google_task_api_addTaskList") }}">
+            <input type="text" name="title" placeholder="Title" required="" />
+            <input type="submit" value="créer">
+        </form>
+    </fieldset>
 
     <div class="row home_choice">
         <div class="row">

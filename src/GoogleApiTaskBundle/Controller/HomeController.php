@@ -3,8 +3,11 @@
 namespace GoogleApiTaskBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authentication\Token\PreAuthenticatedToken;
 use Symfony\Component\HttpFoundation\Request;
+use Google_Service_Tasks_Task;
+use Google_Service_Tasks_TaskList;
 
 class HomeController extends Controller
 {
@@ -37,13 +40,13 @@ class HomeController extends Controller
             $client->authenticate($request->query->get('code'));
 
             $accessToken = $client->getAccessToken();
-            $accessGoogle = json_decode($accessToken["access_token"]);
 
-            // Pour pouvoir obtenir le refresh token
-            $refreshToken = json_decode(file_get_contents(__DIR__."/../tokenRefresh.txt"));
+            // save the refresh token in a file, ( don't work because the API doesn't return a refresh token )
+            $accessGoogle = json_decode($accessToken['access_token'],true);
+            $refreshToken = json_decode(file_get_contents(__DIR__."/../tokenRefresh.txt"), true);
             $refreshToken[$accessGoogle['access_token']] = $accessGoogle['refresh_token'];
-
             file_put_contents(__DIR__."/../tokenRefresh.txt", json_encode($refreshToken));
+
 
             $security = $this->get('security.token_storage');
 
@@ -124,7 +127,47 @@ class HomeController extends Controller
         $tasks = $taskService->getTasksFromList($taskList);
         $taskLists = $taskService->getTaskLists($taskList);
 
-        return $this->render('GoogleApiTaskBundle:Home:items.html.twig', array('tasks' => $tasks, 'taskList' => $taskLists));
+        return $this->render('GoogleApiTaskBundle:Home:items.html.twig', array('tasks' => $tasks, 'taskList' => $taskLists, 'idTaskList' => $taskList));
     }
+
+    /**
+     * Method to add a taskList in google API
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addTaskListAction(Request $request)
+    {
+        $title = htmlspecialchars($request->request->get("title"));
+
+        $taskList = new Google_Service_Tasks_TaskList();
+        $taskList->setTitle($title);
+
+        $this->get('google_task_api.google.home')->addTaskList($taskList);
+
+        return $this->redirectToRoute('google_task_api_list');
+    }
+
+    /**
+     * Method to add a task in a TaskList, Ajax call
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addTaskInTaskListsAction(Request $request)
+    {
+        $title = $request->request->get("title");
+        $idTaskList = $request->request->get("idTaskLists");
+        $task = new Google_Service_Tasks_Task();
+
+        $task->setTitle($title);
+        
+        $this->get('google_task_api.google.home')->addTaskInTaskLists($idTaskList, $task);
+
+        return new JsonResponse(array('status'=> 'OK'));
+    }
+
 
 }
