@@ -169,7 +169,13 @@ class HomeController extends Controller
         return new JsonResponse(array('status'=> 'OK'));
     }
 
-
+    /**
+     * Method to update a TaskList name
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function updateListAction(Request $request)
     {
         $idTaskLists = $request->request->get('idTaskList');
@@ -181,6 +187,28 @@ class HomeController extends Controller
         $taskList->setId($idTaskLists);
 
         $this->get('google_task_api.google.home')->updateTaskList($idTaskLists, $taskList);
+
+        return new JsonResponse(array('status'=> 'OK'));
+    }
+
+    /**
+     * Method to update the title for a task
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function taskUpdateAction(Request $request)
+    {
+        $idTaskList = $request->request->get('idTaskList');
+        $idTask = $request->request->get('idTask');
+        $title = $request->request->get('titleUpdate');
+
+        $task = new Google_Service_Tasks_Task();
+        $task->setId($idTask);
+        $task->setTitle($title);
+        
+        $this->get('google_task_api.google.home')->updateTask($idTaskList, $idTask, $task);
 
         return new JsonResponse(array('status'=> 'OK'));
     }

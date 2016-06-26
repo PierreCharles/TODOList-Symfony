@@ -17,8 +17,16 @@
                     {% set continue = true %}
                 {% else %}
                     <div class="col-md-3">
-                        <li class="collection-item">Task title : <a href="{{ path("google_task_api_taskDetails", {"taskList": task.id}) }}">{{ task.title }}</a>
-                            </br>Due date : {{ task.due }}
+                        <li class="collection-item">Task title : <a href="#" class="updateTask">{{ task.title }}</a>
+                            <div style="display:none;" id="updateTaskDisplay">
+                                <form id="formUpdateTask">
+                                    <input type="text" required="" value="{{ task.title }}" id="titleUpdate" name="titleUpdate">
+                                    <input type="hidden" id="idTask" value="{{ task.id }}" name="idTask">
+                                    <input type="hidden" id="idTaskList" value="" name="idTaskList">
+                                    <input type="hidden" value="{{ path('google_task_api_taskUpdate') }}" id="urlTask">
+                                    <input type="button" value="Modifier" id="clickUpdateTask">
+                                </form>
+                            </div>
                             </br>Status : {{ task.status }}
                         </li>
                     </div>
@@ -27,5 +35,11 @@
             </div>
         </ul>
     </div>
-
+    <script>
+        var chaineSupprimer = "/google/list/items/";
+        var parser = document.createElement('a');
+        parser.href = window.location.href;
+        var resultat = parser.pathname.replace(chaineSupprimer, "");
+        $('#idTaskList').val(resultat);
+    </script>
 {% endblock %}

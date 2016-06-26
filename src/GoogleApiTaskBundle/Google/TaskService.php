@@ -104,4 +104,17 @@ class TaskService {
     {
         $this->service->tasklists->update($idTaskList, $taskList);
     }
+
+    /**
+     * Method to update a Task
+     *
+     * @param $idTaskList
+     * @param $idTask
+     * @param $task
+     */
+    public function updateTask($idTaskList, $idTask, $task)
+    {
+        $this->service->tasks->update($idTaskList, $idTask, $task);
+    }
 }
+
